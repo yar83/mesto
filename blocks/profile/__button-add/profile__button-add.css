@@ -1,0 +1,13 @@
+.profile__button-add {
+  width: 282px;
+  height: 50px;
+  border-radius: 2px;
+  border: 2px solid #fff;
+  background: no-repeat center / 16px 16px url(../../../images/plus.svg);
+  transition: opacity linear .6s;
+}
+
+.profile__button-add:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
