@@ -1,6 +1,6 @@
 .header {
   background: no-repeat center / cover url(../../images/mesto-rus.svg);
-  width: calc(0.039854 * 100vw + 90.987px);
-  height: calc(0.008958 * 100vw + 21.53px);
+  width: min(calc(0.039854 * 100vw + 90.987px), 142px);
+  height: min(calc(0.008958 * 100vw + 21.53px), 33px);
   border-bottom: 1px solid #54545407;
 }
