@@ -1,0 +1,6 @@
+.profile__name-button {
+  display: flex;
+  flex-flow: row nowrap;
+  place-items: center;
+  width: max-content;
+}

@@ -1,6 +1,7 @@
 .header {
-  background: no-repeat center / cover url(../../images/mesto-rus.svg);
-  width: min(calc(0.039854 * 100vw + 90.987px), 142px);
-  height: min(calc(0.008958 * 100vw + 21.53px), 33px);
-  border-bottom: 1px solid #54545407;
+  max-width: 880px;
+  width: 100%;
+  background: no-repeat max(calc(-0.028125 * 100vw + 36px), 0px) min(calc(0.017708 * 100vw + 22.3333px), 45px) / min(calc(0.039854 * 100vw + 90.987px), 142px) calc(0.008958 * 100vw + 21.53px) url(../../images/mesto-rus.svg);
+  padding-top: min(calc(0.036458 * 100vw + 72.3333px), 119px);
+  border-bottom: 1px solid #54545470;
 }

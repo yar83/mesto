@@ -1,0 +1,12 @@
+.profile__button-edit {
+  border: 1px solid white;
+  background: no-repeat center / 7.5px url(../../../images/pensil.svg);
+  width: 18px;
+  height: 18px;
+  transition: opacity linear .6s;
+}
+
+.profile__button-edit:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
