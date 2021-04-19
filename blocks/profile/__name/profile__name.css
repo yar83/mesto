@@ -1,6 +1,10 @@
 .profile__name {
   color: #fff;
-  padding: 0 10px 0 35px;
+  padding: 0;
   margin: 0;
   font: normal 500 27px/1 'Inter', sans-serif;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

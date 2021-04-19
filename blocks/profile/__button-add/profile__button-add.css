@@ -3,6 +3,7 @@
   height: 50px;
   border-radius: 2px;
   border: 2px solid #fff;
+  margin: 0 0 36px 0;
   background: no-repeat center / 16px 16px url(../../../images/plus.svg);
   transition: opacity linear .6s;
 }
