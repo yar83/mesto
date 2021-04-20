@@ -1,14 +1,14 @@
 .profile__button-edit {
   border: 1px solid white;
+  box-sizing: border-box;
   background: no-repeat center / 7.5px url(../../../images/pensil.svg);
-  width: 18px;
-  height: 18px;
+  width: min(calc(0.010714 * 100vw + 14.571428px), 24px);
+  height: min(calc(0.010714 * 100vw + 14.571428px), 24px);
+  margin: 0; 
+  grid-area: edit;
+  align-self: center;
   transition: opacity linear .6s;
-  /* Дизайнер хочет, чтобы центрировалось имя_фамилия без учёта кнопки "редактировать", чтобы это реализовать, изымаем кнопку из потока и 
-   * абсолютным позиционированием помещаем её правее на 10px от имя_фамилия. Всё это происходит в отдельной обёртке и не влияет на окружение. */
-  position: absolute;
-  right: -28px;
-}
+  }
 
 .profile__button-edit:hover {
   cursor: pointer;
