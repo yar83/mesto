@@ -10,7 +10,6 @@
   .profile {
     flex-flow: row nowrap;
     justify-content: flex-start;
-    align-items: center;
     padding: 42px 27px 36px;
   }
 }
