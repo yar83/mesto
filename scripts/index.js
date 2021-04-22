@@ -2,35 +2,39 @@ const openPopupButton = document.querySelector('.profile__button-edit');
 const closePopupButton = document.querySelector('.popup__close');
 const formAuthor = document.querySelector('.form__author');
 const popup = document.querySelector('.popup');
+const name = document.querySelector('.profile__name');
+const about = document.querySelector('.profile__about');
+const formFieldName = document.querySelector('.form__item_el_name');
+const formFieldAbout = document.querySelector('.form__item_el_about');
 
-function togglePopup() {
-  if (popup.classList.contains('.popup_opened')) {
-    clearPopupData();
-    popup.classList.toggle('popup_opened');
-  } else {
-    setPopupInitialData();
-    popup.classList.toggle('popup_opened');
-  }
+function openPopup() {
+  setPopupInitialData();
+  popup.classList.add('popup_opened');
+}
+
+function closePopup() {
+  clearPopupData();
+  popup.classList.remove('popup_opened');
 }
 
 function setPopupInitialData() {
-  document.querySelector('.form__item_el_name').value = document.querySelector('.profile__name').textContent;
-  document.querySelector('.form__item_el_about').value = document.querySelector('.profile__about').textContent;
+  formFieldName.value = name.textContent;
+  formFieldAbout.value = about.textContent;
 }
 
 function clearPopupData() {
-  document.querySelector('.form__item_el_name').value = ''; 
-  document.querySelector('.form__item_el_about').value = ''; 
+  formFieldName.value = ''; 
+  formFieldAbout.value = ''; 
 }
 
 function saveNewData(event) {
   event.preventDefault();
-  document.querySelector('.profile__name').textContent = document.querySelector('.form__item_el_name').value;
-  document.querySelector('.profile__about').textContent = document.querySelector('.form__item_el_about').value;
-  togglePopup();
+  name.textContent = formFieldName.value;
+  about.textContent = formFieldAbout.value;
+  closePopup();
 }
 
 
-openPopupButton.addEventListener('click', togglePopup);
-closePopupButton.addEventListener('click', togglePopup);
+openPopupButton.addEventListener('click', openPopup);
+closePopupButton.addEventListener('click', closePopup);
 formAuthor.addEventListener('submit', saveNewData);
