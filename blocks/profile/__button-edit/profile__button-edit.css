@@ -1,10 +1,14 @@
 .profile__button-edit {
   border: 1px solid white;
+  box-sizing: border-box;
   background: no-repeat center / 7.5px url(../../../images/pensil.svg);
-  width: 18px;
-  height: 18px;
+  width: min(calc(0.010714 * 100vw + 14.571428px), 24px);
+  height: min(calc(0.010714 * 100vw + 14.571428px), 24px);
+  margin: 0; 
+  grid-area: edit;
+  align-self: center;
   transition: opacity linear .6s;
-}
+  }
 
 .profile__button-edit:hover {
   cursor: pointer;
