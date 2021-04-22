@@ -21,10 +21,10 @@
           <img src="./images/avatar.png" class="profile__avatar-picture" alt="Изобржение, описывающее владельца профиля">
           <div class="profile__name-button">
             <h1 class="profile__name">Ярослав Башмаков</h1>
-            <div class="profile__button-edit"></div>
+            <button class="profile__button-edit" type="button"></button>
             <p class="profile__about">Гребец катамарана</p>
           </div>
-          <div class="profile__button-add"></div>
+          <button class="profile__button-add" type="button"></button>
         </section>
 
         <section class="places">
@@ -33,42 +33,42 @@
               <img class="card__picture" src="./images/polyarniy-ural.webp" alt="Живописное озеро Хадатаёганлор на Полярном урале в окружении величественных гор">
               <div class="card__text-heart">
                 <h2 class="card__place">Полярный Урал</h2>
-                <img class="card__heart" src="./images/heart.svg" alt="сердечко, чтобы ставить лайки">
+                <button type="button" class="card__heart"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__picture" src="./images/karachaevo-cherkesia.webp" alt="Вид с возвышенности на долину реки Уллу-Кам и аул Хурзук">
               <div class="card__text-heart">
                 <h2 class="card__place">Карачаево&ndash;Черкессия</h2>
-                <img class="card__heart" src="./images/heart.svg" alt="сердечко, чтобы ставить лайки">
+                <button type="button" class="card__heart"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__picture" src="./images/kostroma-region.webp" alt="Милый русскому сердцу пейзаж средней полосы, такой знакомый и такой родной">
               <div class="card__text-heart">
                 <h2 class="card__place">Костромская область</h2>
-                <img class="card__heart" src="./images/heart.svg" alt="сердечко, чтобы ставить лайки">
+                <button type="button" class="card__heart"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__picture" src="./images/pripolyarniy-ural.webp" alt="Вид на Уральский хребет с его высочашей вершины горы Народной">
               <div class="card__text-heart">
                 <h2 class="card__place">Приполярный Урал</h2>
-                <img class="card__heart" src="./images/heart.svg" alt="сердечко, чтобы ставить лайки">
+                <button type="button" class="card__heart"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__picture" src="./images/krym.webp" alt="Вид на Ялту с вершины Ай-Петри">
               <div class="card__text-heart">
                 <h2 class="card__place">Крым</h2>
-                <img class="card__heart" src="./images/heart.svg" alt="сердечко, чтобы ставить лайки">
+                <button type="button" class="card__heart"></button>
               </div>
             </li>
             <li class="card">
               <img class="card__picture" src="./images/russkiy-island.webp" alt="Вид на Тихий океан с мыса Тобизина на острове Русском">
               <div class="card__text-heart">
                 <h2 class="card__place">Остров Русский</h2>
-                <img class="card__heart" src="./images/heart.svg" alt="сердечко, чтобы ставить лайки">
+                <button type="button" class="card__heart"></button>
               </div>
             </li>
           </ul>
@@ -83,8 +83,7 @@
 
     <div class="popup">
       <div class="popup__container">
-        <div class="popup__close">
-        </div>
+        <button class="popup__close" type="button"></button>
         <div class="form">
           <form class="form__author">
             <h2 class="form__title">Редактировать профиль</h2>
@@ -93,7 +92,7 @@
               <input type="text" value="" class="form__item form__item_el_about">
             </fieldset>
             <fieldset class="form__buttons">
-              <button type="submit" class="form__button form__button_el_button-save">Сохранить</button>
+              <button type="submit" class="form__button">Сохранить</button>
             </fieldset>
           </form>
         </div>

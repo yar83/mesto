@@ -1,11 +1,11 @@
 .card__heart {
   width: 22px;
   height: 19px;
-  object-fit: contain;
-  padding: 0;
+  border: unset;
+  outline: unset;
   margin: 0 20px 0 0;
-  display: block;
-  transition: opacity linear .4s;
+  background: no-repeat center / contain url(../../../images/heart.svg);
+  transition: opacity linear .2s;
 }
 
 .card__heart:hover {

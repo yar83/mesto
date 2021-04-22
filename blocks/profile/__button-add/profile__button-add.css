@@ -7,11 +7,12 @@
   margin: 0;
   background: no-repeat center / 16px 16px url(../../../images/plus.svg);
   transition: opacity linear .6s;
+  outline: unset;
 }
 
 .profile__button-add:hover {
   cursor: pointer;
-  opacity: 60%;
+  opacity: .6;
 }
 
 @media (min-width: 600px) {
