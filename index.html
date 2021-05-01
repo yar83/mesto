@@ -82,7 +82,7 @@
     </div>
 
     <!-- Popup profile edit _ start -->
-    <div class="popup">
+    <div class="popup popup_edit-profile">
       <div class="popup__container">
         <button class="popup__close" type="button" aria-label="Кнопка, чтобы закрыть попап"></button>
         <div class="form">
@@ -102,19 +102,18 @@
     <!-- Popup profile edit _ end -->
 
     <!-- Popup add card _ start -->
-    <div class="popup-add-card">
-      <div class="popup-add-card__container">
-        <div class="popup-add-card__close">
-        </div>
-        <div class="form-add-card">
-          <form class="form-add-card__card">
-            <h2 class="form-add-card__title">Новое место</h2>
-            <fieldset class="form-add-card__items">
-              <input type="text" value="" class="form-add-card__item form-add-card__item_el_name" name="form-add-card__item_el_name" required placeholder="Название">
-              <input type="text" value="" class="form-add-card__item form-add-card__item_el_about" name="form-add-card__item_el_about" required placeholder="Ссылка на картинку">
+    <div class="popup popup_add-card">
+      <div class="popup__container">
+        <button class="popup__close" type="button" aria-label="Кнопка, чтобы закрыть попап"></button>
+        <div class="form">
+          <form class="form__author" name="form__author">
+            <h2 class="form__title">Новое место</h2>
+            <fieldset class="form__items">
+              <input type="text" value="" class="form__item form__item_el_name" name="form__item_el_name" required placeholder="Название">
+              <input type="text" value="" class="form__item form__item_el_about" name="form__item_el_about" required placeholder="Ссылка на картинку">
             </fieldset>
-            <fieldset class="form-add-card__buttons">
-              <button type="submit" class="form-add-card__button form-add-card__button_el_button-save">Создать</button>
+            <fieldset class="form__buttons">
+              <button type="submit" class="form__button form__button_el_button-save">Создать</button>
             </fieldset>
           </form>
         </div>
