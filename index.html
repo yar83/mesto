@@ -29,48 +29,6 @@
 
         <section class="places">
           <ul class="places__list">
-            <li class="card">
-              <img class="card__picture" src="./images/polyarniy-ural.webp" alt="Живописное озеро Хадатаёганлор на Полярном урале в окружении величественных гор">
-              <div class="card__text-heart">
-                <h2 class="card__place">Полярный Урал</h2>
-                <button type="button" class="card__heart"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__picture" src="./images/karachaevo-cherkesia.webp" alt="Вид с возвышенности на долину реки Уллу-Кам и аул Хурзук">
-              <div class="card__text-heart">
-                <h2 class="card__place">Карачаево&ndash;Черкессия</h2>
-                <button type="button" class="card__heart"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__picture" src="./images/kostroma-region.webp" alt="Милый русскому сердцу пейзаж средней полосы, такой знакомый и такой родной">
-              <div class="card__text-heart">
-                <h2 class="card__place">Костромская область</h2>
-                <button type="button" class="card__heart"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__picture" src="./images/pripolyarniy-ural.webp" alt="Вид на Уральский хребет с его высочашей вершины горы Народной">
-              <div class="card__text-heart">
-                <h2 class="card__place">Приполярный Урал</h2>
-                <button type="button" class="card__heart"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__picture" src="./images/krym.webp" alt="Вид на Ялту с вершины Ай-Петри">
-              <div class="card__text-heart">
-                <h2 class="card__place">Крым</h2>
-                <button type="button" class="card__heart"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__picture" src="./images/russkiy-island.webp" alt="Вид на Тихий океан с мыса Тобизина на острове Русском">
-              <div class="card__text-heart">
-                <h2 class="card__place">Остров Русский</h2>
-                <button type="button" class="card__heart"></button>
-              </div>
-            </li>
           </ul>
         </section>
       </main>
@@ -86,7 +44,7 @@
       <div class="popup__container">
         <button class="popup__close popup__close_profile" type="button" aria-label="Кнопка, чтобы закрыть попап"></button>
         <div class="form">
-          <form class="form__entity" name="form__author">
+          <form class="form__entity form__entity_profile" name="form__author">
             <h2 class="form__title">Редактировать профиль</h2>
             <fieldset class="form__items">
               <input type="text" value="" class="form__item form__item_el_name" name="form__item_el_name" required placeholder="Представьтесь">
@@ -106,7 +64,7 @@
       <div class="popup__container">
         <button class="popup__close popup__close_add-card" type="button" aria-label="Кнопка, чтобы закрыть попап"></button>
         <div class="form">
-          <form class="form__entity" name="form__card">
+          <form class="form__entity form__entity_add-card" name="form__card">
             <h2 class="form__title">Новое место</h2>
             <fieldset class="form__items">
               <input type="text" value="" class="form__item form__item_el_card-title" name="form__item_el_card-title" required placeholder="Название">
@@ -120,7 +78,8 @@
       </div>
     </div>
     <!-- Popup add card _ end -->
-    <template id="card">
+    
+    <template id="card-template">
       <li class="card">
         <img class="card__picture">
         <div class="card__text-heart">
