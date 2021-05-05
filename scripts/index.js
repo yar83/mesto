@@ -50,6 +50,9 @@ function addCard(item) {
   document.querySelector('.places__list').append(cardEntity);
 
   cardEntity.querySelector('.card__trashbin').addEventListener('click', function() { removeCard(event.target) });
+  cardEntity.querySelector('.card__heart').addEventListener('click', function() {
+    event.target.classList.contains('card__heart_color_black') ? dislikeCard(event.target) : likeCard(event.target);
+  });
 }
 
 function openPopup(popup) {
@@ -94,6 +97,14 @@ function addNewCard(event) {
 
 function removeCard(target) {
   target.closest('.card').remove();
+}
+
+function likeCard(target) {
+  target.classList.add('card__heart_color_black');
+}
+
+function dislikeCard(target) {
+  target.classList.remove('card__heart_color_black');
 }
 
 openPopupProfile.addEventListener('click', function() { openPopup(popupProfile) });
