@@ -44,11 +44,12 @@ function drawCardsGallery() {
 }
 
 function addCard(item) {
-    const cardEntity = cardTemplate.content.querySelector('.card').cloneNode(true);
-    cardEntity.querySelector('.card__picture').src = item.link;
-    cardEntity.querySelector('.card__place').textContent = item.name;
-    document.querySelector('.places__list').append(cardEntity);
-    console.log(cardEntity);
+  const cardEntity = cardTemplate.content.querySelector('.card').cloneNode(true);
+  cardEntity.querySelector('.card__picture').src = item.link;
+  cardEntity.querySelector('.card__place').textContent = item.name;
+  document.querySelector('.places__list').append(cardEntity);
+
+  cardEntity.querySelector('.card__trashbin').addEventListener('click', function() { removeCard(event.target) });
 }
 
 function openPopup(popup) {
@@ -89,6 +90,10 @@ function addNewCard(event) {
   card[0].link = formCardLink.value;
   addCard(card[0]);
   closePopup(popupAddCard);
+}
+
+function removeCard(target) {
+  target.closest('.card').remove();
 }
 
 openPopupProfile.addEventListener('click', function() { openPopup(popupProfile) });
