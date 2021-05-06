@@ -49,6 +49,7 @@ function addCard(item) {
   const cardEntity = cardTemplate.content.querySelector('.card').cloneNode(true);
   cardEntity.querySelector('.card__picture').src = item.link;
   cardEntity.querySelector('.card__place').textContent = item.name;
+  cardEntity.querySelector('.card__picture').setAttribute('alt', 'Изображение ' + item.name);
   document.querySelector('.places__list').prepend(cardEntity);
 
   cardEntity.querySelector('.card__trashbin').addEventListener('click', function() { removeCard(event.target) });
@@ -61,12 +62,14 @@ function addCard(item) {
 function openPopup(popup) {
   //Установка начальных значений полей формы модального окна необходимо только в случае открытия окна редактирования профиля
   if (popup.classList.contains('popup_edit-profile')) { setPopupInitialData() };
+  popup.classList.remove('popup_closed');
   popup.classList.add('popup_opened');
 }
 
 function closePopup(popup) {
   if (popup.classList.contains('popup_edit-profile')) { clearPopupData() };
   popup.classList.remove('popup_opened');
+  popup.classList.add('popup_closed');
 }
 
 function setPopupInitialData() {

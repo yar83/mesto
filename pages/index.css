@@ -41,7 +41,6 @@
 @import url(../blocks/fullszimg-popup/__container/fullszimg-popup__container.css);
 @import url(../blocks/fullszimg-popup/__image/fullszimg-popup__image.css);
 @import url(../blocks/fullszimg-popup/__title/fullszimg-popup__title.css);
-@import url(../blocks/popup/_opened/popup_opened.css);
 
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__entity/form__entity.css);
@@ -50,3 +49,6 @@
 @import url(../blocks/form/__items/form__items.css);
 @import url(../blocks/form/__item/form__item.css);
 @import url(../blocks/form/__title/form__title.css);
+
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_closed/popup_closed.css);
