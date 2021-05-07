@@ -24,7 +24,7 @@ const initialCards = [
     link: 'https://i.ibb.co/jhSWGmy/polural.webp'
   },
   { name: 'Карачаево-Черкесия',
-    link: 'https://i.ibb.co/SnSsfql/kchr.webp'
+    link: 'https://i.ibb.co/SnSsfqJ/kchr.webp'
   },
   { name: 'Костромская область',
     link: 'https://i.ibb.co/z5Y2tsS/kostroma.webp'
