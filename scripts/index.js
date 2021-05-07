@@ -21,22 +21,22 @@ const formCardLink = document.querySelector('.form__item_el_card-link');
 const cardTemplate = document.querySelector('#card-template');
 const initialCards = [
   { name: 'Полярный Урал',
-    link: 'http://rtcam.ru/mesto/polural.webp'
+    link: 'https:/i.ibb.co/jhSWGmy/polural.webp'
   },
   { name: 'Карачаево-Черкесия',
-    link: 'http://rtcam.ru/mesto/kchr.webp'
+    link: 'https:/i.ibb.co/SnSsfql/kchr.webp'
   },
   { name: 'Костромская область',
-    link: 'http://rtcam.ru/mesto/kostroma.webp'
+    link: 'https:/i.ibb.co/z5Y2tsS/kostroma.webp'
   },
   { name: 'Приполярный Урал',
-    link: 'http://rtcam.ru/mesto/pripural.webp'
+    link: 'https:/i.ibb.co/5RCzt82/pripural.webp'
   },
   { name: 'Крым',
-    link: 'http://rtcam.ru/mesto/krym.webp'
+    link: 'https:/i.ibb.co/jRT2cGm/krym.webp'
   },
   { name: 'Остров Русский',
-    link: 'http://rtcam.ru/mesto/rusisl.webp'
+    link: 'https:/i.ibb.co/SwbrnPY/rusisl.webp'
   }];
 
 drawCardsGallery();
