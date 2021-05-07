@@ -18,6 +18,7 @@ const formFieldName = document.querySelector('.form__item_el_name');
 const formFieldAbout = document.querySelector('.form__item_el_about');
 const formCardTitle = document.querySelector('.form__item_el_card-title');
 const formCardLink = document.querySelector('.form__item_el_card-link');
+
 const cardTemplate = document.querySelector('#card-template');
 const initialCards = [
   { name: 'Полярный Урал',
@@ -67,9 +68,9 @@ function openPopup(popup) {
 }
 
 function closePopup(popup) {
-  if (popup.classList.contains('popup_edit-profile')) { clearPopupData() };
   popup.classList.remove('popup_opened');
   popup.classList.add('popup_closed');
+  clearPopupData(popup);
 }
 
 function setPopupInitialData() {
@@ -77,9 +78,11 @@ function setPopupInitialData() {
   formFieldAbout.value = about.textContent;
 }
 
-function clearPopupData() {
-  formFieldName.value = ''; 
-  formFieldAbout.value = ''; 
+function clearPopupData(item) {
+  const formInputs = item.getElementsByClassName('form__item');
+  for (let i = 0; i < formInputs.length; i++) {
+    formInputs[i].value = '';
+  }
 }
 
 function saveNewData(event) {
@@ -118,6 +121,7 @@ function showFullSizeImage(target) {
   openPopup(popupFullSizeImage);
   popupFullSizeImage.querySelector('.fullszimg-popup__image').src = target.src;
   popupFullSizeImage.querySelector('.fullszimg-popup__title').textContent = target.closest('.card').querySelector('.card__place').textContent;
+  popupFullSizeImage.querySelector('.fullszimg-popup__image').setAttribute('alt', 'Изображение ' + target.closest('.card').querySelector('.card__place').textContent); 
 }
 
 openPopupProfile.addEventListener('click', function() { openPopup(popupProfile) });
