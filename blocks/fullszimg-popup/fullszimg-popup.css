@@ -1,5 +1,6 @@
 .fullszimg-popup {
   background: rgba(0, 0, 0, .9);
+  /*
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,4 +10,5 @@
   bottom: 0;
   left: 0;
   transition: visibility .5s, opacity .5s linear;
+  */
 }
