@@ -12,8 +12,8 @@ const popupProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
 const popupFullSizeImage = document.querySelector('.fullszimg-popup');
 
-const name = document.querySelector('.profile__name');
-const about = document.querySelector('.profile__about');
+const profilePersonName = document.querySelector('.profile__name');
+const profilePersonAbout = document.querySelector('.profile__about');
 const formFieldName = document.querySelector('.form__item_el_name');
 const formFieldAbout = document.querySelector('.form__item_el_about');
 const formCardTitle = document.querySelector('.form__item_el_card-title');
@@ -74,8 +74,8 @@ function closePopup(popup) {
 }
 
 function setPopupInitialData() {
-  formFieldName.value = name.textContent;
-  formFieldAbout.value = about.textContent;
+  formFieldName.value = profilePersonName.textContent;
+  formFieldAbout.value = profilePersonAbout.textContent;
 }
 
 function clearPopupData(item) {
@@ -87,8 +87,8 @@ function clearPopupData(item) {
 
 function saveNewData(event) {
   event.preventDefault();
-  name.textContent = formFieldName.value;
-  about.textContent = formFieldAbout.value;
+  profilePersonName.textContent = formFieldName.value;
+  profilePersonAbout.textContent = formFieldAbout.value;
   closePopup(popupProfile);
 }
 
