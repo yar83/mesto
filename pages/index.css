@@ -48,8 +48,11 @@
 @import url(../blocks/form/__button/_inactive/form__button_inactive.css);
 @import url(../blocks/form/__buttons/form__buttons.css);
 @import url(../blocks/form/__items/form__items.css);
+@import url(../blocks/form/__label/form__label.css);
 @import url(../blocks/form/__item/form__item.css);
+@import url(../blocks/form/__item/_type/form__item_type_error.css);
 @import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__error-text/form__error-text.css);
 
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/_closed/popup_closed.css);

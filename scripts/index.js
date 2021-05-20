@@ -72,11 +72,16 @@ function addCard(item) {
 function openPopup(popup) {
   popup.classList.remove('popup_closed');
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', (evt) => {
+    overlayClickCatcher(evt, popup);
+  });
+  document.addEventListener('keyup', overlayEscCatcher);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   popup.classList.add('popup_closed');
+  document.removeEventListener('keyup', overlayEscCatcher);
 }
 
 function setPopupInitialData() {
@@ -150,3 +155,23 @@ closePopupFullSizeImageButton.addEventListener('click', function() {
 
 formEditProfile.addEventListener('submit', saveNewData);
 formAddCard.addEventListener('submit', addNewCard);
+
+//close popup when overlay clicked
+const overlayClickCatcher = (evt, popup) => {
+  if (evt.target === popup) {
+    closePopup(popup);
+  }
+}
+
+//close popup when Esc pressed
+const overlayEscCatcher = (evt) => {
+  const popupsList = Array.from(document.querySelectorAll('.popup'));
+  if (evt.key === 'Escape') {
+    //find opened popup
+    const openedPopup = popupsList.find((popup) => {
+      return popup.classList.contains('popup_opened') === true; 
+    });
+    clearPopupData(openedPopup);
+    closePopup(openedPopup);
+  }
+}
