@@ -5,7 +5,7 @@ const openPopupAddCard = document.querySelector('.profile__button-add');
 
 const closePopupProfileButton = document.querySelector('.popup__close_profile');
 const closePopupAddCardButton = document.querySelector('.popup__close_add-card');
-const closePopupFullSizeImageButton = document.querySelector('.fullszimg-popup__btn-close');
+const closePopupFullSizeImageButton = document.querySelector('.popup__close_full-sz-img');
 
 const formEditProfile = document.querySelector('.form__entity_profile');
 const formAddCard = document.querySelector('.form__entity_add-card');
