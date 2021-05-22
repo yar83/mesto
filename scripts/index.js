@@ -44,8 +44,6 @@ const initialCards = [
     link: 'https://i.ibb.co/SwbrnPY/rusisl.webp'
   }];
 
-drawCardsGallery();
-
 function drawCardsGallery() {
   initialCards.forEach(item => addCard(createCard(item)));
 }
@@ -175,3 +173,5 @@ const overlayEscCatcher = (evt) => {
     closePopup(openedPopup);
   }
 }
+
+drawCardsGallery();
