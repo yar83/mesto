@@ -55,11 +55,11 @@ function createCard(item) {
   cardPicture.src = item.link;
   cardPicture.setAttribute('alt', 'Изображение ' + item.name);
   cardEntity.querySelector('.card__place').textContent = item.name;
-  cardEntity.querySelector('.card__trashbin').addEventListener('click', function() { removeCard(event.target) });
+  cardEntity.querySelector('.card__trashbin').addEventListener('click', function(event) { removeCard(event.target) });
   cardEntity.querySelector('.card__heart').addEventListener('click', function() {
     toggleLike(event.target);
   });
-  cardPicture.addEventListener('click', function() { showFullSizeImage(item.link, item.name) });
+  cardPicture.addEventListener('click', function(event) { showFullSizeImage(item.link, item.name) });
   return cardEntity;
 }
 
