@@ -69,9 +69,6 @@ function addCard(item) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  popup.addEventListener('click', (evt) => {
-    overlayClickCatcher(evt, popup);
-  });
   document.addEventListener('keyup', overlayEscCatcher);
 }
 
@@ -151,6 +148,18 @@ closePopupFullSizeImageButton.addEventListener('click', function() {
 
 formEditProfile.addEventListener('submit', saveNewData);
 formAddCard.addEventListener('submit', addNewCard);
+
+popupProfile.addEventListener('click', (evt) => {
+  overlayClickCatcher(evt, popupProfile);
+});
+
+popupAddCard.addEventListener('click', (evt) => {
+  overlayClickCatcher(evt, popupAddCard);
+});
+
+popupFullSizeImage.addEventListener('click', (evt) => {
+  overlayClickCatcher(evt, popupFullSizeImage);
+});
 
 //close popup when overlay clicked
 const overlayClickCatcher = (evt, popup) => {
