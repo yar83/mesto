@@ -53,7 +53,7 @@ function createCard(item) {
   cardPicture.setAttribute('alt', 'Изображение ' + item.name);
   cardEntity.querySelector('.card__place').textContent = item.name;
   cardEntity.querySelector('.card__trashbin').addEventListener('click', function(event) { removeCard(event.target) });
-  cardEntity.querySelector('.card__heart').addEventListener('click', function() {
+  cardEntity.querySelector('.card__heart').addEventListener('click', function(event) {
     toggleLike(event.target);
   });
   cardPicture.addEventListener('click', function(event) { showFullSizeImage(item.link, item.name) });
@@ -132,17 +132,17 @@ formAddCard.addEventListener('submit', addNewCard);
 //Add listener by goingh through the array of popups
 Array.from(popups).forEach((popup) => {
   popup.addEventListener('click', (evt) => {
-    overlayClickCatcher(evt, popup);
+    catchOverlayOrCrossClick(evt, popup);
   });
 });
 
 //close popup when overlay clicked
-const overlayClickCatcher = (evt, popup) => {
+const catchOverlayOrCrossClick = (evt, popup) => {
   if (evt.target === popup) {
     closePopup(popup);
   }
 
-  if (event.target.classList.contains('popup__close')) {
+  if (evt.target.classList.contains('popup__close')) {
     closePopup(popup);
   }
 }
