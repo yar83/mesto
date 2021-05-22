@@ -19,6 +19,11 @@ const setEventListeners = (formElement, inputItemSelector, buttonItem, inactiveB
   const inputList = Array.from(formElement.querySelectorAll(inputItemSelector));
   toggleButtonState(inputList, buttonItem, inactiveButtonSelector);
 
+  //Deactivate button after click. Approach is valid as button is clickable only when all inputs are valid
+  buttonItem.addEventListener('click', () => {
+    buttonItem.classList.add(inactiveButtonSelector);
+  });
+
   inputList.forEach((inputItem) => {
     inputItem.addEventListener('input', () => {
       checkInputValidity(formElement, inputItem, inputErrorSelector);

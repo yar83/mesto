@@ -3,13 +3,10 @@ const placesList = document.querySelector('.places__list');
 const openPopupProfile = document.querySelector('.profile__button-edit');
 const openPopupAddCard = document.querySelector('.profile__button-add');
 
-const closePopupProfileButton = document.querySelector('.popup__close_profile');
-const closePopupAddCardButton = document.querySelector('.popup__close_add-card');
-const closePopupFullSizeImageButton = document.querySelector('.popup__close_full-sz-img');
-
 const formEditProfile = document.querySelector('.form__entity_profile');
 const formAddCard = document.querySelector('.form__entity_add-card');
 
+const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
 const popupFullSizeImage = document.querySelector('.fullszimg-popup');
@@ -69,12 +66,12 @@ function addCard(item) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keyup', overlayEscCatcher);
+  document.addEventListener('keyup', catchEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keyup', overlayEscCatcher);
+  document.removeEventListener('keyup', catchEscape);
 }
 
 function setPopupInitialData() {
@@ -94,7 +91,6 @@ function saveNewData(event) {
   profilePersonName.textContent = formFieldName.value;
   profilePersonAbout.textContent = formFieldAbout.value;
   closePopup(popupProfile);
-  clearPopupData(popupProfile);
 }
 
 function addNewCard(event) {
@@ -130,35 +126,14 @@ openPopupProfile.addEventListener('click', function() {
 
 openPopupAddCard.addEventListener('click', function() { openPopup(popupAddCard) });
 
-closePopupProfileButton.addEventListener('click', function() { 
-  closePopup(popupProfile);
-  clearPopupData(popupProfile);
-});
-
-closePopupAddCardButton.addEventListener('click', function() { 
-  closePopup(popupAddCard);
-  clearPopupData(popupAddCard);
-});
-
-closePopupFullSizeImageButton.addEventListener('click', function() { 
-  closePopup(popupFullSizeImage);
-  clearPopupData(popupFullSizeImage);
-});
-
-
 formEditProfile.addEventListener('submit', saveNewData);
 formAddCard.addEventListener('submit', addNewCard);
 
-popupProfile.addEventListener('click', (evt) => {
-  overlayClickCatcher(evt, popupProfile);
-});
-
-popupAddCard.addEventListener('click', (evt) => {
-  overlayClickCatcher(evt, popupAddCard);
-});
-
-popupFullSizeImage.addEventListener('click', (evt) => {
-  overlayClickCatcher(evt, popupFullSizeImage);
+//Add listener by goingh through the array of popups
+Array.from(popups).forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    overlayClickCatcher(evt, popup);
+  });
 });
 
 //close popup when overlay clicked
@@ -166,17 +141,19 @@ const overlayClickCatcher = (evt, popup) => {
   if (evt.target === popup) {
     closePopup(popup);
   }
+
+  if (event.target.classList.contains('popup__close')) {
+    closePopup(popup);
+  }
 }
 
 //close popup when Esc pressed
-const overlayEscCatcher = (evt) => {
-  const popupsList = Array.from(document.querySelectorAll('.popup'));
+const catchEscape = (evt) => {
   if (evt.key === 'Escape') {
     //find opened popup
-    const openedPopup = popupsList.find((popup) => {
+    const openedPopup = Array.from(popups).find((popup) => {
       return popup.classList.contains('popup_opened') === true; 
     });
-    clearPopupData(openedPopup);
     closePopup(openedPopup);
   }
 }
