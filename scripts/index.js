@@ -68,7 +68,6 @@ function addCard(item) {
 }
 
 function openPopup(popup) {
-  popup.classList.remove('popup_closed');
   popup.classList.add('popup_opened');
   popup.addEventListener('click', (evt) => {
     overlayClickCatcher(evt, popup);
@@ -78,7 +77,6 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.classList.add('popup_closed');
   document.removeEventListener('keyup', overlayEscCatcher);
 }
 
