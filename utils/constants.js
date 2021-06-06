@@ -12,6 +12,7 @@ export const placesList = document.querySelector('.places__list');
 export const openPopupProfile = document.querySelector('.profile__button-edit');
 export const openPopupAddCard = document.querySelector('.profile__button-add');
 
+export const formsList = document.querySelectorAll('.form__entity');
 export const formEditProfile = document.querySelector('.form__entity_profile');
 export const formAddCard = document.querySelector('.form__entity_add-card');
 

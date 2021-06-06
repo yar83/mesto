@@ -1,4 +1,5 @@
 import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 import {
   initialCards, 
   formCardTitle,
@@ -6,12 +7,14 @@ import {
   placesList,
   openPopupAddCard,
   openPopupProfile,
+  formsList,
   formEditProfile,
   formAddCard,
   popups,
   popupProfile,
   popupAddCard,
   cardTemplate,
+  config
 } from '../utils/constants.js';
 import { 
   showFullSizeImage, 
@@ -39,6 +42,7 @@ function addNewCard(event) {
   addCard(new Card(card, cardTemplate).getCard());
   closePopup(popupAddCard);
   clearPopupData(popupAddCard);
+  cardForm.toggleButtonState();
 }
 
 openPopupProfile.addEventListener('click', function() { 
@@ -57,5 +61,11 @@ Array.from(popups).forEach((popup) => {
     catchOverlayOrCrossClick(evt, popup);
   });
 });
+
+const profileForm = new FormValidator(formEditProfile, config);
+const cardForm = new FormValidator(formAddCard, config);
+profileForm.enableValidation();
+cardForm.enableValidation();
+cardForm.toggleButtonState();
 
 drawCardsGallery();
