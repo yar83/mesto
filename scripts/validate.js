@@ -1,3 +1,5 @@
+import { config } from '../utils/constants.js';
+
 const enableValidation = (formsData) => {
   const formsList = Array.from(document.querySelectorAll(formsData.formSelector));
   formsList.forEach((formItem) => {
@@ -72,12 +74,4 @@ const hideInputError = (formElement, inputItem, inputErrorSelector) => {
   errorElement.textContent = '';
 }
 
-
-enableValidation({
-  formSelector: '.form__entity',
-  fieldsetInputsSelector: '.form__items',
-  inputSelector: '.form__item',
-  submitButtonSelector: '.form__button',
-  inactiveButtonClass: 'form__button_inactive',
-  inputErrorClass: 'form__item_type_error',
-});
+enableValidation(config);
