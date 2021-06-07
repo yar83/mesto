@@ -27,10 +27,13 @@ import {
   submitEditProfileForm
 } from '../utils/utils.js';
 
+const createCard = (item) => {
+  return new Card(item, cardTemplate).getCard();
+}
+
 function drawCardsGallery() {
   initialCards.forEach(item => {
-    const card = new Card(item, cardTemplate).getCard();
-    addCard(card);
+    addCard(createCard(item));
   });
 }
 
@@ -39,7 +42,7 @@ function addNewCard(event) {
   const card = { name: '', link: ''};
   card.name = formCardTitle.value;
   card.link = formCardLink.value;
-  addCard(new Card(card, cardTemplate).getCard());
+  addCard(createCard(card));
   closePopup(popupAddCard);
   clearPopupData(popupAddCard);
   cardForm.toggleButtonState();
