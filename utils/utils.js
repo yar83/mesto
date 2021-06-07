@@ -68,8 +68,5 @@ const catchEscape = (evt) => {
 }
 
 export function clearPopupData(item) {
-  const formInputs = item.getElementsByClassName('form__item');
-  for (let i = 0; i < formInputs.length; i++) {
-    formInputs[i].value = '';
-  }
+  item.querySelector('.form__entity').reset();
 }
