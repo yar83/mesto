@@ -24,7 +24,7 @@ import {
   addCard,
   catchOverlayOrCrossClick,
   clearPopupData,
-  saveNewData
+  submitEditProfileForm
 } from '../utils/utils.js';
 
 function drawCardsGallery() {
@@ -52,7 +52,7 @@ openPopupProfile.addEventListener('click', function() {
 
 openPopupAddCard.addEventListener('click', function() { openPopup(popupAddCard) });
 
-formEditProfile.addEventListener('submit', saveNewData);
+formEditProfile.addEventListener('submit', submitEditProfileForm);
 
 formAddCard.addEventListener('submit', addNewCard);
 

@@ -29,7 +29,7 @@ export function closePopup(popup) {
   document.removeEventListener('keyup', catchEscape);
 }
 
-export function saveNewData(event) {
+export function submitEditProfileForm(event) {
   event.preventDefault();
   profilePersonName.textContent = formFieldName.value;
   profilePersonAbout.textContent = formFieldAbout.value;
