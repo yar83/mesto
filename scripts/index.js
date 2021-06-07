@@ -69,6 +69,5 @@ const validatorProfileForm = new FormValidator(formEditProfile, config);
 const validatorCardForm = new FormValidator(formAddCard, config);
 validatorProfileForm.enableValidation();
 validatorCardForm.enableValidation();
-validatorCardForm.toggleButtonState();
 
 drawCardsGallery();
