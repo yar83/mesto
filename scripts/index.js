@@ -45,7 +45,7 @@ function addNewCard(event) {
   addCard(createCard(card));
   closePopup(popupAddCard);
   clearPopupData(popupAddCard);
-  cardForm.toggleButtonState();
+  validatorCardForm.toggleButtonState();
 }
 
 openPopupProfile.addEventListener('click', function() { 
@@ -65,10 +65,10 @@ Array.from(popups).forEach((popup) => {
   });
 });
 
-const profileForm = new FormValidator(formEditProfile, config);
-const cardForm = new FormValidator(formAddCard, config);
-profileForm.enableValidation();
-cardForm.enableValidation();
+const validatorProfileForm = new FormValidator(formEditProfile, config);
+const validatorCardForm = new FormValidator(formAddCard, config);
+validatorProfileForm.enableValidation();
+validatorCardForm.enableValidation();
 cardForm.toggleButtonState();
 
 drawCardsGallery();
