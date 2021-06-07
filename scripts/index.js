@@ -50,10 +50,17 @@ function addNewCard(event) {
 
 openPopupProfile.addEventListener('click', function() { 
   setPopupInitialData();
+  validatorProfileForm.hideAllInputsErrors();
+  validatorProfileForm.toggleButtonState();
   openPopup(popupProfile) 
 });
 
-openPopupAddCard.addEventListener('click', function() { openPopup(popupAddCard) });
+openPopupAddCard.addEventListener('click', function() { 
+  // Когда пользователь кликает на кнопку открытия попапа карточки, форма принудительно очищается в любом случае, кнопка переводится в режим "откл", скрываются все уведомления об ошибках инпутов
+  clearPopupData(popupAddCard);
+  validatorCardForm.hideAllInputsErrors();
+  validatorCardForm.toggleButtonState(); 
+  openPopup(popupAddCard) });
 
 formEditProfile.addEventListener('submit', submitEditProfileForm);
 

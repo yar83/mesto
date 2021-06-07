@@ -46,6 +46,13 @@ export default class FormValidator {
     errorElement.textContent = '';
   }
 
+  hideAllInputsErrors = () => {
+    this._inputList.forEach((input) => {
+      this._hideInputError(input);
+    });
+  }
+
+
   toggleButtonState = () => {
     const button = this._form.querySelector(this._config.submitButtonSelector);
     if (this._hasInvalidInput()) {
