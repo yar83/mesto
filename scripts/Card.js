@@ -20,9 +20,7 @@ export default class Card {
 
   _setEventListeners = () => {
     this._cardElement.querySelector('.card__trashbin').addEventListener('click', (event) => { this._removeCard(event.target) });
-
     this._cardElement.querySelector('.card__heart').addEventListener('click', (event) => { this._toggleLike(event.target) });
-
     this._cardElement.querySelector('.card__picture').addEventListener('click', (event) => { showFullSizeImage(this._link, this._name) });
   }
 
