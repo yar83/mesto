@@ -2,6 +2,7 @@ import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import Popup from '../components/Popup.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import {
   initialCards, 
   formCardTitle,
@@ -21,13 +22,14 @@ import {
 import { 
   showFullSizeImage, 
   setPopupInitialData,
-  catchOverlayOrCrossClick,
   clearPopupData,
   submitEditProfileForm
 } from '../utils/utils.js';
 
 const createCard = (item) => {
-  return new Card(item, cardTemplate).getCard();
+  return new Card(item, cardTemplate, function (imgSrcAltText) {
+    new PopupWithImage('.fullszimg-popup', imgSrcAltText).open();
+    }).getCard();
 }
 
 const cardList = new Section(
@@ -76,7 +78,3 @@ const validatorProfileForm = new FormValidator(formEditProfile, config);
 const validatorCardForm = new FormValidator(formAddCard, config);
 validatorProfileForm.enableValidation();
 validatorCardForm.enableValidation();
-
-const instanceOfPopupAddCard = new Popup('.popup_add-card');
-instanceOfPopupAddCard.open();
-instanceOfPopupAddCard.setEventListeners();

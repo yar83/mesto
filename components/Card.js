@@ -1,10 +1,12 @@
 import { showFullSizeImage } from '../utils/utils.js';
 
 export default class Card {
-  constructor(cardData, templateSelector) {
+  constructor(cardData, templateSelector, handleCardClick) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
+    this._altText = 'Изображение ' + cardData.name;
   }
 
   _getTemplate = () => {
@@ -15,13 +17,13 @@ export default class Card {
     const picture = this._cardElement.querySelector('.card__picture');
     this._cardElement.querySelector('.card__place').textContent = this._name;
     picture.src = this._link;
-    picture.setAttribute('alt', 'Изображение ' + this._name);
+    picture.setAttribute('alt', this._altText);
   }
 
   _setEventListeners = () => {
     this._cardElement.querySelector('.card__trashbin').addEventListener('click', (event) => { this._removeCard(event.target) });
     this._cardElement.querySelector('.card__heart').addEventListener('click', (event) => { this._toggleLike(event.target) });
-    this._cardElement.querySelector('.card__picture').addEventListener('click', (event) => { showFullSizeImage(this._link, this._name) });
+    this._cardElement.querySelector('.card__picture').addEventListener('click', (event) => { this._handleCardClick({imgSrc: this._link, altText: this._altText})});
   }
 
   _removeCard = target => {

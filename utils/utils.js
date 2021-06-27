@@ -31,28 +31,6 @@ export function setPopupInitialData() {
   formFieldAbout.value = profilePersonAbout.textContent;
 }
 
-//close popup when overlay clicked
-export const catchOverlayOrCrossClick = (evt, popup) => {
-  if (evt.target === popup) {
-    closePopup(popup);
-  }
-
-  if (evt.target.classList.contains('popup__close')) {
-    closePopup(popup);
-  }
-}
-
-//close popup when Esc pressed
-const catchEscape = (evt) => {
-  if (evt.key === 'Escape') {
-    //find opened popup
-    const openedPopup = Array.from(popups).find((popup) => {
-      return popup.classList.contains('popup_opened') === true; 
-    });
-    closePopup(openedPopup);
-  }
-}
-
 export function clearPopupData(item) {
   item.querySelector('.form__entity').reset();
 }
