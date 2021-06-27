@@ -4,3 +4,4 @@ notes.txt
 *.swp
 node_modules
 dist
+package.json
