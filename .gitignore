@@ -2,3 +2,5 @@
 .vimrc
 notes.txt
 *.swp
+node_modules
+dist
