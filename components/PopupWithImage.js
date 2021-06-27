@@ -10,7 +10,6 @@ export default class PopupWithImage extends Popup {
 
   open() {
     super.open();
-    console.log(this._currentPopup);
     this._currentPopup.querySelector('.fullszimg-popup__image').src = this._imgSrc;
     this._currentPopup.querySelector('.fullszimg-popup__title').textContent = this._altText;
   }

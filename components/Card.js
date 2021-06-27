@@ -1,5 +1,3 @@
-import { showFullSizeImage } from '../utils/utils.js';
-
 export default class Card {
   constructor(cardData, templateSelector, handleCardClick) {
     this._name = cardData.name;
