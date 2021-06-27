@@ -1,5 +1,7 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import Popup from '../components/Popup.js';
 import {
   initialCards, 
   formCardTitle,
@@ -18,10 +20,7 @@ import {
 } from '../utils/constants.js';
 import { 
   showFullSizeImage, 
-  openPopup, 
-  closePopup,
   setPopupInitialData,
-  addCard,
   catchOverlayOrCrossClick,
   clearPopupData,
   submitEditProfileForm
@@ -31,18 +30,25 @@ const createCard = (item) => {
   return new Card(item, cardTemplate).getCard();
 }
 
-function drawCardsGallery() {
-  initialCards.forEach(item => {
-    addCard(createCard(item));
-  });
-}
+const cardList = new Section(
+  {
+    data: initialCards,
+    renderer: (item) => {
+      const card = createCard(item);
+      cardList.addItem(card);
+    }
+  },
+  '.places__list'
+);
+
+cardList.renderItems();
 
 function addNewCard(event) {
   event.preventDefault();
   const card = { name: '', link: ''};
   card.name = formCardTitle.value;
   card.link = formCardLink.value;
-  addCard(createCard(card));
+  cardList.addItem(createCard(card));
   closePopup(popupAddCard);
   clearPopupData(popupAddCard);
   validatorCardForm.toggleButtonState();
@@ -66,15 +72,11 @@ formEditProfile.addEventListener('submit', submitEditProfileForm);
 
 formAddCard.addEventListener('submit', addNewCard);
 
-Array.from(popups).forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
-    catchOverlayOrCrossClick(evt, popup);
-  });
-});
-
 const validatorProfileForm = new FormValidator(formEditProfile, config);
 const validatorCardForm = new FormValidator(formAddCard, config);
 validatorProfileForm.enableValidation();
 validatorCardForm.enableValidation();
 
-drawCardsGallery();
+const instanceOfPopupAddCard = new Popup('.popup_add-card');
+instanceOfPopupAddCard.open();
+instanceOfPopupAddCard.setEventListeners();

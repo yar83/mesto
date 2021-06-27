@@ -19,16 +19,6 @@ export function showFullSizeImage(link, name) {
   fullSizeImage.setAttribute('alt', 'Изображение ' + name); 
 }
 
-export function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keyup', catchEscape);
-}
-
-export function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keyup', catchEscape);
-}
-
 export function submitEditProfileForm(event) {
   event.preventDefault();
   profilePersonName.textContent = formFieldName.value;
@@ -39,10 +29,6 @@ export function submitEditProfileForm(event) {
 export function setPopupInitialData() {
   formFieldName.value = profilePersonName.textContent;
   formFieldAbout.value = profilePersonAbout.textContent;
-}
-
-export function addCard(item) {
-  placesList.prepend(item);
 }
 
 //close popup when overlay clicked
