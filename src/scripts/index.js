@@ -21,11 +21,13 @@ const validatorCardForm = new FormValidator(formAddCard, config);
 validatorProfileForm.enableValidation();
 validatorCardForm.enableValidation();
 
+//создать один раз экземлпляр класса PopupWithImage
+const popupWithImage = new PopupWithImage('.fullszimg-popup');
 
 const createCard = (item) => {
-  return new Card(item, cardTemplate, (imgSrcAltText) => {
-    const popupWithImage = new PopupWithImage('.fullszimg-popup', imgSrcAltText);
-    popupWithImage.open();
+  return new Card(item, cardTemplate, ( {imgSrc, altText} ) => {
+    //вызвать метод с передачей аргументов
+    popupWithImage.open(imgSrc, altText);
     popupWithImage.setEventListeners();
     }).getCard();
 }
