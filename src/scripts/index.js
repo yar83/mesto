@@ -25,9 +25,9 @@ validatorCardForm.enableValidation();
 const popupWithImage = new PopupWithImage('.fullszimg-popup');
 
 const createCard = (item) => {
-  return new Card(item, cardTemplate, ( {imgSrc, altText} ) => {
+  return new Card(item, cardTemplate, ( data ) => {
     //вызвать метод с передачей аргументов
-    popupWithImage.open(imgSrc, altText);
+    popupWithImage.open(data.imgSrc, data.altText);
     popupWithImage.setEventListeners();
     }).getCard();
 }

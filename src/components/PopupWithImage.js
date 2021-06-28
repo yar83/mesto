@@ -6,9 +6,9 @@ export default class PopupWithImage extends Popup {
     this._currentPopup = document.querySelector(popupSelector);
   }
 
-  open() {
-    super.open(imgSrc, altText);
-    this._currentPopup.querySelector('.fullszimg-popup__image').src = this.imgSrc;
-    this._currentPopup.querySelector('.fullszimg-popup__title').textContent = this.altText;
+  open(imgSrc, altText) {
+    super.open();
+    this._currentPopup.querySelector('.fullszimg-popup__image').src = imgSrc;
+    this._currentPopup.querySelector('.fullszimg-popup__title').textContent = altText;
   }
 }
