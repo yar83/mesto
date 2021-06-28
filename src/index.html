@@ -17,7 +17,7 @@
 
       <main class="content">
         <section class="profile">
-          <img src="./images/avatar.png" class="profile__avatar-picture" alt="Изображение, описывающее владельца профиля">
+          <img src="<%=require('./images/avatar.png')%>" class="profile__avatar-picture" alt="Изображение, описывающее владельца профиля">
           <div class="profile__name-button">
             <h1 class="profile__name">Ярослав Башмаков</h1>
             <button class="profile__button-edit" type="button" aria-label="Кнопка вызова формы редактирования персональных данных"></button>
@@ -94,7 +94,6 @@
     <div class="popup fullszimg-popup">
       <div class="fullszimg-popup__container">
         <img class="fullszimg-popup__image" src="https://upload.wikimedia.org/wikipedia/ru/thumb/f/f6/MP-Palpatine.webp/454px-MP-Palpatine.webp" alt="Изображение mesto">
-        <!-- <button class="fullszimg-popup__btn-close"></button> -->
         <button class="popup__close popup__close_full-sz-img"></button>
         <h2 class="fullszimg-popup__title"></h2>
       </div>
