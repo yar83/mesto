@@ -58,6 +58,7 @@ formProfile.setEventListeners();
 
 openPopupProfile.addEventListener('click', () => {
   formProfile.open();
+  validatorProfileForm.resetValidation();
   const userData = userInfo.getUserInfo();
   formProfile.setInitialFormData(userData);
 });
@@ -72,6 +73,6 @@ formPopup.setEventListeners();
 
 openPopupAddCard.addEventListener('click', () => { 
   formPopup.open();
-  validatorCardForm.hideAllInputsErrors();
+  validatorCardForm.resetValidation();
   validatorCardForm.toggleButtonState(); 
 });

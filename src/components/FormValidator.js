@@ -46,7 +46,7 @@ export default class FormValidator {
     errorElement.textContent = '';
   }
 
-  hideAllInputsErrors = () => {
+  resetValidation = () => {
     this._inputList.forEach((input) => {
       this._hideInputError(input);
     });
