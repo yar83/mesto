@@ -23,12 +23,12 @@ validatorCardForm.enableValidation();
 
 //создать один раз экземлпляр класса PopupWithImage
 const popupWithImage = new PopupWithImage('.fullszimg-popup');
+popupWithImage.setEventListeners();
 
 const createCard = (item) => {
   return new Card(item, cardTemplate, ( data ) => {
     //вызвать метод с передачей аргументов
     popupWithImage.open(data.imgSrc, data.altText);
-    popupWithImage.setEventListeners();
     }).getCard();
 }
  
