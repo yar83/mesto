@@ -25,7 +25,8 @@ export default class Card {
   }
 
   _removeCard = target => {
-    target.closest('.card').remove();
+    this._cardElement.remove();
+    this._cardElement = null;
   }
 
   _toggleLike = target => {
