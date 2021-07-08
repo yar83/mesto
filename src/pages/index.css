@@ -25,8 +25,10 @@
 @import url(../blocks/card/__picture/card__picture.css);
 @import url(../blocks/card/__trashbin/card__trashbin.css);
 @import url(../blocks/card/__text-heart/card__text-heart.css);
+@import url(../blocks/card/__likes/card__likes.css);
 @import url(../blocks/card/__place/card__place.css);
 @import url(../blocks/card/__heart/card__heart.css);
+@import url(../blocks/card/__likes-number/card__likes-number.css);
 @import url(../blocks/card/__heart/_color/card__heart_color_black.css);
 
 @import url(../blocks/footer/footer.css);
