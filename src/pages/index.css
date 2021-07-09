@@ -43,6 +43,9 @@
 @import url(../blocks/fullszimg-popup/__image/fullszimg-popup__image.css);
 @import url(../blocks/fullszimg-popup/__title/fullszimg-popup__title.css);
 
+@import url(../blocks/delcard-popup/__areyousure/delcard-popup__areyousure.css);
+@import url(../blocks/delcard-popup/__buttonyes/delcard-popup__buttonyes.css);
+
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__entity/form__entity.css);
 @import url(../blocks/form/__button/form__button.css);
