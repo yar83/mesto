@@ -17,13 +17,18 @@
 
       <main class="content">
         <section class="profile">
-          <img src="<%=require('./images/avatar.png')%>" class="profile__avatar-picture" alt="Изображение, описывающее владельца профиля">
-          <div class="profile__name-button">
-            <h1 class="profile__name">Ярослав Башмаков</h1>
-            <button class="profile__button-edit" type="button" aria-label="Кнопка вызова формы редактирования персональных данных"></button>
-            <p class="profile__about">Гребец катамарана</p>
-          </div>
-          <button class="profile__button-add" type="button" aria-label="Кнопка вызова формы добавления новых мест"></button>
+            <div class="profile__avatar-container">
+                <img src="<%=require('./images/avatar.png')%>" class="profile__avatar-picture" alt="Изображение, описывающее владельца профиля">
+                <div class="profile__curtain">
+                    <button class="profile__avatar-edit" type="button"></button>
+                </div>
+            </div>
+            <div class="profile__name-button">
+                <h1 class="profile__name">Ярослав Башмаков</h1>
+                <button class="profile__button-edit" type="button" aria-label="Кнопка вызова формы редактирования персональных данных"></button>
+                <p class="profile__about">Гребец катамарана</p>
+            </div>
+            <button class="profile__button-add" type="button" aria-label="Кнопка вызова формы добавления новых мест"></button>
         </section>
 
         <section class="places">
