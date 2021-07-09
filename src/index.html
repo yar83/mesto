@@ -114,6 +114,28 @@
       </div> 
     </div>
     <!-- Popup delete card _ end -->
+
+    <!-- Popup update profile image _ start -->
+    <div class="popup popup_update-avatar">
+      <div class="popup__container">
+        <button class="popup__close popup__close_update-avatar" type="button" aria-label="Кнопка, чтобы закрыть попап"></button>
+        <div class="form">
+          <form class="form__entity form-entity_update-avatar" novalidate name="form__avatar">
+            <h2 class="form__title">Обновить аватар</h2>
+            <fieldset class="form__items">
+              <label class="form__label">
+                <input type="url" value="" class="form__item form__item_el_avatar-link" id="avatar-input" name="form__item_el_avatar-link" required placeholder="Ссылка на картинку">
+                <span class="form__error-text avatar-input-error"></span>
+              </label>
+            </fieldset>
+            <fieldset class="form__buttons">
+              <button type="submit" class="form__button form__button_el_button-save">Сохранить</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Popup update profile image _ end -->
     
     <template id="card-template">
       <li class="card">
