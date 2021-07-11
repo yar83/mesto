@@ -1,5 +1,5 @@
 .card__likes {
-  width: min-content; 
+  width: min-content;
   margin: 0 20px 0 0;
   display: flex;
   flex-flow: column;
