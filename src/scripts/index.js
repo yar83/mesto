@@ -1,67 +1,129 @@
-import {Card, FormValidator, Section, Popup, PopupWithImage, PopupWithForm, UserInfo} from '../components/index.js';
+import {Card, FormValidator, Section, Popup, PopupWithImage, PopupWithForm, UserInfo, Api} from '../components/index.js';
  
 import {
-  initialCards, 
   openPopupAddCard,
   openPopupProfile,
+  openPopupEditAvatar,
   formEditProfile,
   formAddCard,
+  formUpdateAvatar,
   cardTemplate,
-  config
+  config,
+  apiCredits,
+  userInfoElements
 } from '../utils/constants.js';
 import '../pages/index.css';
 
+let currentUser = {};
+
 const validatorProfileForm = new FormValidator(formEditProfile, config);
 const validatorCardForm = new FormValidator(formAddCard, config);
+const validatorAvatarForm = new FormValidator(formUpdateAvatar, config);
 const popupWithImage = new PopupWithImage('.fullszimg-popup');
 
 
+const api = new Api(apiCredits);
 
-const cardList = new Section(
-  {
-    data: initialCards,
-    renderer: (item) => {
-      const card = createCard(item);
-      cardList.addItem(card);
-    }
-  },
-  '.places__list'
-);
-
-const userInfo = new UserInfo( {name: '.profile__name', about: '.profile__about' } );
-
-const formProfile = new PopupWithForm('.popup_edit-profile', (formValues) => {
-  userInfo.setUserInfo( {name: Object.values(formValues)[0], about: Object.values(formValues)[1]} );  
-});
-
-const formPopup = new PopupWithForm('.popup_add-card', (formValues) => {
-  const newCard = createCard( {name: Object.values(formValues)[0], link: Object.values(formValues)[1]} );
-  cardList.addItem(newCard);
-});
-
-const createCard = (item) => {
-  return new Card(item, cardTemplate, ( data ) => {
-    popupWithImage.open(data.imgSrc, data.altText);
-    }).getCard();
+const updateCurrentUser = (userData) => {
+  currentUser.name = userData.name;
+  currentUser.about = userData.about;
+  currentUser.avatar = userData.avatar;
+  currentUser.cohort = userData.cohort;
+  currentUser._id = userData._id;
 }
 
+api.getUser().then(res => {
+  updateCurrentUser(res);
+});
+
+
+console.log('current user = ', currentUser);
+
+const cardList = new Section('.places__list');
+
+const userInfo = new UserInfo(userInfoElements)
+
+const formUserProfileData = new PopupWithForm('.popup_edit-profile', {
+  handleFormSubmit: (formValues) => {
+    api.updateUserInfo( {name: Object.values(formValues)[0], about: Object.values(formValues)[1]} )
+      .then(res => {
+        userInfo.setUserInfo(res);
+        updateCurrentUser(res);
+      });
+  }
+});
+
+const formAddNewCard = new PopupWithForm('.popup_add-card', {
+  handleFormSubmit: (formValues) => {
+  api.addNewCard(Object.values(formValues)[0], Object.values(formValues)[1])
+    .then(card => {
+      const newCard = createCard(card);
+      cardList.addItem(newCard);
+    });
+  }
+});
+
+const formAvatar =  new PopupWithForm('.popup_update-avatar', {
+
+  handleFormSubmit: (formValues) => {
+  api.updateUserAvatar(Object.values(formValues)[0])
+    .then(res => userInfo.setUserAvatar(res));
+  }
+
+});
+
+const createCard = (card) => {
+  return new Card(card, currentUser, cardTemplate, {
+
+    handleCardClick: (data) => {
+      popupWithImage.open(data.imgSrc, data.altText);
+    },
+
+    handleCardLike: (cardId) => {
+      return api.likeCard(cardId)
+    },
+
+    handleCardDislike: (cardId) => {
+      return api.dislikeCard(cardId)
+    }
+
+  })
+    .getCard();
+}
+
+api.getInitialCards().then(cards => {
+  cards.forEach(card => cardList.addItem(createCard(card)));
+});
+
+api.getUser().then(res => {
+  userInfo.setUserInfo(res);
+  userInfo.setUserAvatar(res);
+});
+
+
 popupWithImage.setEventListeners();
-formProfile.setEventListeners();
-formPopup.setEventListeners();
+formUserProfileData.setEventListeners();
+formAddNewCard.setEventListeners();
+formAvatar.setEventListeners();
 
 openPopupProfile.addEventListener('click', () => {
-  formProfile.open();
+  formUserProfileData.open();
   validatorProfileForm.resetValidation();
   const userData = userInfo.getUserInfo();
-  formProfile.setInitialFormData(userData);
+  formUserProfileData.setInitialFormData(userData);
 });
 
 openPopupAddCard.addEventListener('click', () => { 
-  formPopup.open();
+  formAddNewCard.open();
   validatorCardForm.resetValidation();
   validatorCardForm.toggleButtonState(); 
 });
 
-cardList.renderItems();
+openPopupEditAvatar.addEventListener('click', () => {
+  formAvatar.open();
+});
+
+
 validatorProfileForm.enableValidation();
 validatorCardForm.enableValidation();
+validatorAvatarForm.enableValidation();

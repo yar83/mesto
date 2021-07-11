@@ -27,6 +27,7 @@
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__picture/card__picture.css);
 @import url(../blocks/card/__trashbin/card__trashbin.css);
+@import url(../blocks/card/__trashbin/_visible/card__trashbin_visible.css);
 @import url(../blocks/card/__text-heart/card__text-heart.css);
 @import url(../blocks/card/__likes/card__likes.css);
 @import url(../blocks/card/__place/card__place.css);
