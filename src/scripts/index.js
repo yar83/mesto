@@ -22,6 +22,7 @@ const validatorAvatarForm = new FormValidator(formUpdateAvatar, config);
 const popupWithImage = new PopupWithImage('.fullszimg-popup');
 
 const popupConfirmDelete = new PopupConfirmDelete('.delcard-popup', {
+
   handleButtonClick: (cardId) => {
     console.log(cardId + ' this button clicked');
     return api.deleteCard(cardId);
@@ -32,8 +33,8 @@ const popupConfirmDelete = new PopupConfirmDelete('.delcard-popup', {
     cardElem = null;
   }
 });
-popupConfirmDelete.setEventListeners();
 
+popupConfirmDelete.setEventListeners();
 
 const api = new Api(apiCredits);
 
@@ -48,9 +49,6 @@ const updateCurrentUser = (userData) => {
 api.getUser().then(res => {
   updateCurrentUser(res);
 });
-
-
-console.log('current user = ', currentUser);
 
 const cardList = new Section('.places__list');
 
@@ -140,6 +138,8 @@ openPopupAddCard.addEventListener('click', () => {
 
 openPopupEditAvatar.addEventListener('click', () => {
   formAvatar.open();
+  validatorAvatarForm.resetValidation();
+  validatorAvatarForm.toggleButtonState();
 });
 
 
