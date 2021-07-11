@@ -1,4 +1,4 @@
-import {Card, FormValidator, Section, Popup, PopupWithImage, PopupWithForm, UserInfo, Api} from '../components/index.js';
+import {Card, FormValidator, Section, Popup, PopupWithImage, PopupWithForm, PopupConfirmDelete, UserInfo, Api} from '../components/index.js';
  
 import {
   openPopupAddCard,
@@ -20,6 +20,19 @@ const validatorProfileForm = new FormValidator(formEditProfile, config);
 const validatorCardForm = new FormValidator(formAddCard, config);
 const validatorAvatarForm = new FormValidator(formUpdateAvatar, config);
 const popupWithImage = new PopupWithImage('.fullszimg-popup');
+
+const popupConfirmDelete = new PopupConfirmDelete('.delcard-popup', {
+  handleButtonClick: (cardId) => {
+    console.log(cardId + ' this button clicked');
+    return api.deleteCard(cardId);
+  },
+
+  handleSuccessConfirm: (cardElem) => {
+    cardElem.remove();
+    cardElem = null;
+  }
+});
+popupConfirmDelete.setEventListeners();
 
 
 const api = new Api(apiCredits);
@@ -85,6 +98,12 @@ const createCard = (card) => {
 
     handleCardDislike: (cardId) => {
       return api.dislikeCard(cardId)
+    },
+
+    handleTrashbinClick: (cardId, cardElem) => {
+      console.log('Clicked card with ID: ', cardId, 'elem: ', cardElem);
+      popupConfirmDelete.open();
+      popupConfirmDelete.getCardData(cardId, cardElem);
     }
 
   })

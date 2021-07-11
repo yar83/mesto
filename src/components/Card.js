@@ -8,6 +8,7 @@ export default class Card {
   #handleCardClick;
   #handleCardLike; 
   #handleCardDislike;
+  #handleTrashbinClick;
   #altText;
   #cardElement;
   #trashBinElement;
@@ -15,7 +16,7 @@ export default class Card {
   #likeCount;
   #cardLikers;
 
-  constructor(cardData, currentUser, templateSelector, {handleCardClick, handleCardLike, handleCardDislike} ) {
+  constructor(cardData, currentUser, templateSelector, {handleCardClick, handleCardLike, handleCardDislike, handleTrashbinClick } ) {
     this.#name = cardData.name;
     this.#link = cardData.link;
     this.#cardId = cardData._id;
@@ -24,6 +25,7 @@ export default class Card {
     this.#handleCardClick = handleCardClick;
     this.#handleCardLike = handleCardLike;
     this.#handleCardDislike = handleCardDislike;
+    this.#handleTrashbinClick = handleTrashbinClick;
     this.#altText = 'Изображение ' + cardData.name;
     this.#currentUserId = currentUser._id;
     this.#likeCount = cardData.likes.length;
@@ -62,7 +64,9 @@ export default class Card {
   }
 
   #setEventListeners() {
-    this.#cardElement.querySelector('.card__trashbin').addEventListener('click', (event) => { this.#removeCard(event.target) });
+    this.#cardElement.querySelector('.card__trashbin').addEventListener('click', () => { 
+      this.#handleTrashbinClick(this.#cardId, this.#cardElement); 
+    });
 
     this.#cardElement.querySelector('.card__heart').addEventListener('click', () => { 
       const newDataCurrentCard = this.#hasMyLike() ? this.#handleCardDislike(this.#cardId) : this.#handleCardLike(this.#cardId);
@@ -77,7 +81,7 @@ export default class Card {
     this.#cardElement.querySelector('.card__picture').addEventListener('click', (event) => { this.#handleCardClick({imgSrc: this.#link, altText: this.#altText})});
   }
 
-  #removeCard(target) {
+  #removeCard() {
     this.#cardElement.remove();
     this.#cardElement = null;
   }

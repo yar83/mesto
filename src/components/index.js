@@ -4,5 +4,6 @@ export {default as Section} from './Section.js';
 export {default as Popup} from './Popup.js';
 export {default as PopupWithImage} from './PopupWithImage.js';
 export {default as PopupWithForm} from './PopupWithForm.js';
+export {default as PopupConfirmDelete} from './PopupConfirmDelete.js';
 export {default as UserInfo} from './UserInfo.js';
 export {default as Api} from './Api.js';

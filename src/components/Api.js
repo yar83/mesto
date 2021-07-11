@@ -124,4 +124,20 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
+
+  deleteCard(cardId) {
+    console.log(`${this.#baseApiUrl}cards/${cardId}`);
+    return fetch(`${this.#baseApiUrl}cards/${cardId}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this.#token
+      }
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+  }
 }
