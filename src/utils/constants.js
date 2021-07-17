@@ -1,23 +1,3 @@
-export const initialCards = [
-  { name: 'Полярный Урал',
-    link: 'https://i.ibb.co/jhSWGmy/polural.webp'
-  },
-  { name: 'Карачаево-Черкесия',
-    link: 'https://i.ibb.co/SnSsfqJ/kchr.webp'
-  },
-  { name: 'Костромская область',
-    link: 'https://i.ibb.co/z5Y2tsS/kostroma.webp'
-  },
-  { name: 'Приполярный Урал',
-    link: 'https://i.ibb.co/5RCzt82/pripural.webp'
-  },
-  { name: 'Крым',
-    link: 'https://i.ibb.co/jRT2cGm/krym.webp'
-  },
-  { name: 'Остров Русский',
-    link: 'https://i.ibb.co/SwbrnPY/rusisl.webp'
-  }];
-
 export const openPopupAddCard = document.querySelector('.profile__button-add');
 export const openPopupProfile = document.querySelector('.profile__button-edit');
 export const openPopupEditAvatar = document.querySelector('.profile__avatar-edit');
