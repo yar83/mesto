@@ -64,9 +64,8 @@ const formUserProfileData = new PopupWithForm('.popup_edit-profile', {
     })
     .catch(err => {
       console.log('Невозможно обновить данные пользователя: ' + err);
-      formUserProfileData.close();
-      formUserProfileData.setButtonBusyMode(false);
-    });
+    })
+    .finally(() => formUserProfileData.setButtonBusyMode(false));
   }
 });
 
@@ -82,9 +81,8 @@ const formAddNewCard = new PopupWithForm('.popup_add-card', {
     })
     .catch(err => {
       console.log('Невозможно добавить новую карточку: ' + err);
-      formAddNewCard.close();
-      formAddNewCard.setButtonBusyMode(false);
-    });
+    })
+    .finally(() => formAddNewCard.setButtonBusyMode(false));
   }
 });
 
@@ -100,9 +98,8 @@ const formAvatar =  new PopupWithForm('.popup_update-avatar', {
     })
     .catch(err => {
       console.log('Невозможно обновить аватар: ' + err);
-      formAvatar.close();
-      formAvatar.setButtonBusyMode(false);
     })
+    .finally(() => formAvatar.setButtonBusyMode(false));
   }
 });
 
