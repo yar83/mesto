@@ -1,4 +1,4 @@
-import {Card, FormValidator, Section, Popup, PopupWithImage, PopupWithForm, PopupConfirmDelete, UserInfo, Api} from '../components/index.js';
+import {Card, FormValidator, Section, Popup, PopupWithImage, PopupWithForm, PopupConfirmDelete, UserInfo, Api} from '../components/components.js';
  
 import {
   openPopupAddCard,
@@ -24,7 +24,6 @@ const popupWithImage = new PopupWithImage('.fullszimg-popup');
 const popupConfirmDelete = new PopupConfirmDelete('.delcard-popup', {
 
   handleButtonClick: (cardId) => {
-    console.log(cardId + ' this button clicked');
     return api.deleteCard(cardId);
   },
 
@@ -46,41 +45,65 @@ const updateCurrentUser = (userData) => {
   currentUser._id = userData._id;
 }
 
-api.getUser().then(res => {
-  updateCurrentUser(res);
-});
-
-const cardList = new Section('.places__list');
+const cardList = new Section(
+  (card) => cardList.addItem(createCard(card)), 
+  '.places__list'
+);
 
 const userInfo = new UserInfo(userInfoElements)
 
 const formUserProfileData = new PopupWithForm('.popup_edit-profile', {
   handleFormSubmit: (formValues) => {
-    api.updateUserInfo( {name: Object.values(formValues)[0], about: Object.values(formValues)[1]} )
-      .then(res => {
-        userInfo.setUserInfo(res);
-        updateCurrentUser(res);
-      });
+    formUserProfileData.setButtonBusyMode(true);
+    api.updateUserInfo(formValues)
+    .then(res => {
+      userInfo.setUserInfo(res);
+      updateCurrentUser(res);
+      formUserProfileData.close();
+      formUserProfileData.setButtonBusyMode(false);
+    })
+    .catch(err => {
+      console.log('Невозможно обновить данные пользователя: ' + err);
+      formUserProfileData.close();
+      formUserProfileData.setButtonBusyMode(false);
+    });
   }
 });
 
 const formAddNewCard = new PopupWithForm('.popup_add-card', {
-  handleFormSubmit: (formValues) => {
-  api.addNewCard(Object.values(formValues)[0], Object.values(formValues)[1])
+  handleFormSubmit: ( {name, link} ) => {
+  formAddNewCard.setButtonBusyMode(true);
+    console.log(name, link);
+  api.addNewCard(name, link)
     .then(card => {
-      const newCard = createCard(card);
-      cardList.addItem(newCard);
+      cardList.addItem(createCard(card));
+      formAddNewCard.close();
+      formAddNewCard.setButtonBusyMode(false);
+    })
+    .catch(err => {
+      console.log('Невозможно добавить новую карточку: ' + err);
+      formAddNewCard.close();
+      formAddNewCard.setButtonBusyMode(false);
     });
   }
 });
 
 const formAvatar =  new PopupWithForm('.popup_update-avatar', {
 
-  handleFormSubmit: (formValues) => {
-  api.updateUserAvatar(Object.values(formValues)[0])
-    .then(res => userInfo.setUserAvatar(res));
+  handleFormSubmit: ( {link} ) => {
+  formAvatar.setButtonBusyMode(true);
+  api.updateUserAvatar(link)
+    .then(res => {
+      userInfo.setUserAvatar(res);
+      formAvatar.close();
+      formAvatar.setButtonBusyMode(false);
+    })
+    .catch(err => {
+      console.log('Невозможно обновить аватар: ' + err);
+      formAvatar.close();
+      formAvatar.setButtonBusyMode(false);
+    })
   }
-
 });
 
 const createCard = (card) => {
@@ -99,23 +122,22 @@ const createCard = (card) => {
     },
 
     handleTrashbinClick: (cardId, cardElem) => {
-      console.log('Clicked card with ID: ', cardId, 'elem: ', cardElem);
       popupConfirmDelete.open();
-      popupConfirmDelete.getCardData(cardId, cardElem);
+      popupConfirmDelete.setCardData(cardId, cardElem);
     }
 
   })
     .getCard();
 }
 
-api.getInitialCards().then(cards => {
-  cards.forEach(card => cardList.addItem(createCard(card)));
-});
-
-api.getUser().then(res => {
-  userInfo.setUserInfo(res);
-  userInfo.setUserAvatar(res);
-});
+Promise.all([api.getUser(), api.getInitialCards()])
+  .then(values => {
+    updateCurrentUser(values[0]);
+    userInfo.setUserInfo(currentUser);
+    userInfo.setUserAvatar(currentUser);
+    cardList.rendererItems(values[1]);
+  })
+  .catch(err => console.log('Невозможно получить начальные данные с сервера ' + err));
 
 
 popupWithImage.setEventListeners();

@@ -5,6 +5,7 @@ export default class Popup {
   constructor(popupSelector) {
     this.popupItem = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._button = this.popupItem.querySelector('.form__button');
   }
 
   open() {
@@ -16,6 +17,11 @@ export default class Popup {
     this.popupItem.classList.remove('popup_opened');
     document.removeEventListener('keyup', this._handleEscClose);
   }
+
+  setButtonBusyMode(isBusy) {
+    isBusy ? this._button.textContent = 'Сохранение...' :  this._button.textContent = 'Сохранить';
+  }
+
 
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {

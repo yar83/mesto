@@ -4,7 +4,7 @@ export default class UserInfo {
   #aboutElement;
   #avatarElement;
 
-  constructor( {name, about, avatar} ) {
+  constructor( {about, avatar, name} ) {
     this.#nameElement = document.querySelector(name);
     this.#aboutElement = document.querySelector(about);
     this.#avatarElement = document.querySelector(avatar);

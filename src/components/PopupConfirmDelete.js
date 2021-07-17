@@ -12,19 +12,25 @@ export default class PopupConfirmDelete extends Popup {
     super(popupSelector);
     this.#handleButtonClick = handleButtonClick;
     this.#handleSuccessConfirm = handleSuccessConfirm;
-    this.#delConfirmButton = document.querySelector(popupSelector).querySelector('.delcard-popup__buttonyes');
+    this.#delConfirmButton = this.popupItem.querySelector('.delcard-popup__buttonyes');
   }
 
   setEventListeners() {
     super.setEventListeners();
     this.#delConfirmButton.addEventListener('click', () => {
       this.#handleButtonClick(this.#cardId)
-      .then(() => this.#handleSuccessConfirm(this.#cardElem));
-      super.close();
+      .then(() => {
+        this.#handleSuccessConfirm(this.#cardElem);
+        this.close();
+      })
+      .catch(err => {
+        console.log('Невозможно удалить карочку: ' + err);
+        this.close();
+      });
     });
   }
 
-  getCardData(cardId, cardElem) {
+  setCardData(cardId, cardElem) {
     this.#cardId = cardId;
     this.#cardElem = cardElem;
   }

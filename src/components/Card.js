@@ -16,6 +16,12 @@ export default class Card {
   #likeCount;
   #cardLikers;
 
+  #heart;
+  #picture;
+  #likeNumber;
+  #trashbin;
+  #place;
+
   constructor(cardData, currentUser, templateSelector, {handleCardClick, handleCardLike, handleCardDislike, handleTrashbinClick } ) {
     this.#name = cardData.name;
     this.#link = cardData.link;
@@ -30,16 +36,22 @@ export default class Card {
     this.#currentUserId = currentUser._id;
     this.#likeCount = cardData.likes.length;
     this.#cardLikers = cardData.likes;
+
   }
 
   #getTemplate() {
     this.#templateCopy = document.querySelector(this.#templateSelector).content.querySelector('.card').cloneNode(true);
+    this.#heart = this.#templateCopy.querySelector('.card__heart');
+    this.#picture = this.#templateCopy.querySelector('.card__picture');
+    this.#likeNumber = this.#templateCopy.querySelector('.card__likes-number');
+    this.#trashbin = this.#templateCopy.querySelector('.card__trashbin');
+    this.#place = this.#templateCopy.querySelector('.card__place');
     if (this.#isMyCard()) this.#setTrashBinIcon();
     return this.#templateCopy;
   }
 
   #setTrashBinIcon() {
-    this.#templateCopy.querySelector('.card__trashbin').classList.add('card__trashbin_visible');
+    this.#trashbin.classList.add('card__trashbin_visible');
   }
 
   #isMyCard() {
@@ -51,34 +63,35 @@ export default class Card {
   }
 
   #setData() {
-    const picture = this.#cardElement.querySelector('.card__picture');
-    this.#cardElement.querySelector('.card__place').textContent = this.#name;
+    this.#place.textContent = this.#name;
     this.#setLikes();
     if (this.#hasMyLike()) this.#setLike();
-    picture.src = this.#link;
-    picture.setAttribute('alt', this.#altText);
+    this.#picture.src = this.#link;
+    this.#picture.setAttribute('alt', this.#altText);
   }
 
   #setLikes() {
-    this.#cardElement.querySelector('.card__likes-number').textContent = this.#likeCount;
+    this.#likeNumber.textContent = this.#likeCount;
   }
 
   #setEventListeners() {
-    this.#cardElement.querySelector('.card__trashbin').addEventListener('click', () => { 
+    this.#trashbin.addEventListener('click', () => { 
       this.#handleTrashbinClick(this.#cardId, this.#cardElement); 
     });
 
-    this.#cardElement.querySelector('.card__heart').addEventListener('click', () => { 
+    this.#heart.addEventListener('click', () => { 
       const newDataCurrentCard = this.#hasMyLike() ? this.#handleCardDislike(this.#cardId) : this.#handleCardLike(this.#cardId);
-      newDataCurrentCard.then(res => {
+      newDataCurrentCard
+      .then(res => {
         this.#likeCount = res.likes.length;
         this.#setLikes();
         this.#cardLikers = res.likes;
         this.#hasMyLike() ? this.#setLike() : this.#clearLike();
-      });
+      })
+      .catch(err => console.log('Ошибка: ' + err));
     });
 
-    this.#cardElement.querySelector('.card__picture').addEventListener('click', (event) => { this.#handleCardClick({imgSrc: this.#link, altText: this.#altText})});
+    this.#picture.addEventListener('click', (event) => { this.#handleCardClick({imgSrc: this.#link, altText: this.#altText})});
   }
 
   #removeCard() {
@@ -87,15 +100,13 @@ export default class Card {
   }
 
   #setLike() {
-    this.#cardElement.querySelector('.card__heart').classList.add('card__heart_color_black');
+    this.#heart.classList.add('card__heart_color_black');
+
   }
 
   #clearLike() {
-    this.#cardElement.querySelector('.card__heart').classList.remove('card__heart_color_black');
+    this.#heart.classList.remove('card__heart_color_black');
   }
-
-
-  
 
   getCard = () => {
     this.#cardElement = this.#getTemplate();

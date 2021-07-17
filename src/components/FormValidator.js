@@ -3,6 +3,7 @@ export default class FormValidator {
     this._form = form;
     this._config = config;
     this._inputList = Array.from(form.querySelectorAll(config.inputSelector));
+    this._button = this._form.querySelector(this._config.submitButtonSelector);
   };
 
   enableValidation = () => {
@@ -54,13 +55,12 @@ export default class FormValidator {
 
 
   toggleButtonState = () => {
-    const button = this._form.querySelector(this._config.submitButtonSelector);
     if (this._hasInvalidInput()) {
-      button.classList.add(this._config.inactiveButtonClass);
-      button.setAttribute('disabled', '');
+      this._button.classList.add(this._config.inactiveButtonClass);
+      this._button.setAttribute('disabled', '');
     } else {
-      button.classList.remove(this._config.inactiveButtonClass);
-      button.removeAttribute('disabled');
+      this._button.classList.remove(this._config.inactiveButtonClass);
+      this._button.removeAttribute('disabled');
     }
   }
 
