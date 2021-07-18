@@ -23,11 +23,9 @@ export default class PopupConfirmDelete extends Popup {
       .then(() => {
         this.#handleSuccessConfirm(this.#cardElem);
         this.close();
-        this._setButtonBusyMode(false);
       })
       .catch(err => {
         console.log('Невозможно удалить карточку: ' + err);
-        this._setButtonBusyMode(false);
       })
       .finally(() => this._setButtonBusyMode(false));
     });
