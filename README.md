@@ -15,5 +15,5 @@ Project "Place" is an education project that was made as one of several projects
 3. **JS**<br>
   The page interacts with user via **JavaScript**. User can change data on a page and add some content. Code is divided into modules and each does its own task. 
 4. **Webpack**<br>
-  **Webpack** is a bundler for the whole project.
+  **Webpack** is a bundler for the whole project. It is used to collect single modules to one bundle and deploy it to the server.
 ##### Perspective
