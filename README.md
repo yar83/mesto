@@ -1,4 +1,4 @@
-[ENG](#education-project-"place")<br>
+[ENG](#education-project-place)<br>
 [РУС](#учебный-проект-"Место")
 
 ## Education project "Place"
