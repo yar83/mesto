@@ -1,9 +1,9 @@
 # Education project "Place"
 
-## Content
-###### About(#about)
-###### Technology(#technology)
-###### Perspective(#perspective)
+Content
+About(#about)
+Technology(#technology)
+Perspective(#perspective)
 
 ###### About
 ###### Technology
