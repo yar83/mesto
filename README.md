@@ -1,4 +1,4 @@
-# Education project "Place"
+## Education project "Place"
 
 Content:<br>
 [About](#about)<br>
