@@ -1,3 +1,6 @@
+[ENG](#education-project-"place")
+[РУС](#учебный-проект-"Место")
+
 ## Education project "Place"
 
 Content:<br>
@@ -19,3 +22,5 @@ Project "Place" is an education project that was made as one of several projects
   
 ##### Perspective
 This project is a final version of base technologies sprint. Next goal is to refactor the code with React.JS library so that to get more clear and mantainable code.
+
+## Учебный проект "Место"
