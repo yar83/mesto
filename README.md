@@ -6,7 +6,7 @@ Content:<br>
 [Perspective](#perspective)<br>
 
 ##### About
-Project "Place" is an education project that was made as one of several projects during Yandex Prakticum frontend developer course. It encompasses base web technologies as **HTML** and **CSS** plus foundationa of **JavaScript** and **webpack** as module bundler.
+Project "Place" is an education project that was made as one of several projects during Yandex Praktikum frontend developer course. It encompasses base web technologies as **HTML** and **CSS** plus foundationa of **JavaScript** and **webpack** as module bundler.
 ##### Technology
 1. **HTML**<br>
   Main layout except styles uses **HTML** of last living standard and based on semantic elements.
@@ -16,4 +16,6 @@ Project "Place" is an education project that was made as one of several projects
   The page interacts with user via **JavaScript**. User can change data on a page and add some content. Code is divided into modules and each does its own task. 
 4. **Webpack**<br>
   **Webpack** is a bundler for the whole project. It is used to collect single modules to one bundle and deploy it to the server.
+  
 ##### Perspective
+This project is a final version of base technologies sprint. Next goal is to refactor the code with React.JS library so that to get more clear and mantainable code.
