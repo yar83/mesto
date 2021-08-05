@@ -9,7 +9,7 @@ Content:<br>
 [Perspective](#perspective)<br>
 
 ##### About
-Project "Place" is an education project that was made as one of several projects during Yandex Praktikum frontend developer course. It encompasses base web technologies as **HTML** and **CSS** plus foundationa of **JavaScript** and **webpack** as module bundler.
+Project "Place" is an education project that was made as one of several projects during Yandex Praktikum frontend developer course. It encompasses base web technologies as **HTML** and **CSS** plus foundations of **JavaScript** and **webpack** as module bundler.
 ##### Technology
 1. **HTML**<br>
   Main layout except styles uses **HTML** of last living standard and based on semantic elements.
@@ -24,3 +24,11 @@ Project "Place" is an education project that was made as one of several projects
 This project is a final version of base technologies sprint. Next goal is to refactor the code with React.JS library so that to get more clear and mantainable code.
 
 ## Учебный проект "Место"
+
+Содержание:<br>
+[Общие сведения](#общие-сведения)<br>
+[Технологии](#технологии)<br>
+[Развитие проекта](#развитие-проекта)<br>
+
+##### Общие сведение
+Проект "Место" - это учебный проект, выполненный в рамках курса "Фронтенд разработчик" от Яндекс Практикума. Он включается в себя работу с основными веб-технологиями, такими как **HTML**, **CSS**, **JavaScript** и сборщиком проекта **Webpack**.
